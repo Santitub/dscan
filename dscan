@@ -1,0 +1,10 @@
+#!/bin/bash
+# Script de lanzamiento para DScanner
+# NOTA: Este script requiere que se ejecute con 'sudo' para el escaneo SYN.
+
+# Se asume que el usuario ha activado un entorno virtual llamado 'venv'
+PYTHON_VENV="./venv/bin/python3"
+SCRIPT="./script.py"
+
+# Ejecuta el script de python con sudo y le pasa TODOS los argumentos ($@)
+sudo "$PYTHON_VENV" "$SCRIPT" "$@"
