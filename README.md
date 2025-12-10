@@ -1,6 +1,6 @@
 # DScan: Herramienta de Triage Rápido para Pentesting
 
-> Un script Python para automatizar el reconocimiento de puertos y generar reportes de vectores de ataque, optimizado para entornos de CTF y HTB.
+Dcan es una herramienta Python para automatizar el reconocimiento de puertos y generar reportes de vectores de ataque, optimizado para entornos de CTF y HTB.
 
 ## 🌟 Valor Añadido
 * **Velocidad Extrema:** Utiliza flags agresivos de Nmap (`-T5`, `--min-rate 5000`) para minimizar el tiempo de escaneo.
