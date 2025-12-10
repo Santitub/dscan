@@ -23,3 +23,7 @@ Dcan es una herramienta Python para automatizar el reconocimiento de puertos y g
   ## 🚀 Uso
   Ejemplo 1 - Escaneo básico y reporte en terminal: `dscan 10.10.10.123`
   Ejemplo 2 - Generar reporte Markdown para el write-up: `dscan 10.10.10.123 -o md`
+
+  ## Resultado
+  ![.](out.png)
+r
