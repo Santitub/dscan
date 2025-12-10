@@ -26,4 +26,5 @@ Dcan es una herramienta Python para automatizar el reconocimiento de puertos y g
 
   ## Resultado
   ![.](out.png)
-r
+
+Espero que a alguien le sea de utilidad esta herramienta!
