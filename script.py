@@ -5,10 +5,8 @@ import sys
 from datetime import datetime
 from colorama import Fore, Style, init
 
-# Inicializar colores
 init(autoreset=True)
 
-# 🧠 CEREBRO (Base de conocimiento para recomendaciones)
 CHEAT_SHEET = {
     'ftp': {
         'tool': 'ftp <IP>',
@@ -84,8 +82,6 @@ def procesar_datos(nm):
                 banner = f"{producto} {version}".strip()
                 script_output = service.get('script', {}) 
                 
-                # LA LÍNEA DE EXPLOITS FUE ELIMINADA AQUÍ
-                
                 recomendacion = CHEAT_SHEET.get(nombre_servicio, {
                     'tool': 'Google / Searchsploit',
                     'action': 'Servicio no común. Investigar manualmente versión y puerto.',
@@ -99,7 +95,6 @@ def procesar_datos(nm):
                     "banner": banner,
                     "scripts": script_output,
                     "guia": recomendacion,
-                    # El campo "exploits" ya no existe en el output
                 })
     return datos_estructurados
 
@@ -114,24 +109,18 @@ def reporte_pantalla(target, datos):
         return
 
     for item in datos:
-        # Cabecera del puerto
         print(f"\n{Fore.MAGENTA}➤ PUERTO {item['puerto']}/{item['protocolo'].upper()} : {Fore.WHITE}{item['servicio']} {Fore.LIGHTBLACK_EX}({item['banner']})")
         
-        # Mostrar salida de scripts NSE si existen
         if item['scripts']:
             print(f"{Fore.LIGHTBLACK_EX}   └── [NSE Info]:")
             for k, v in item['scripts'].items():
                 v_clean = v.strip().replace('\n', ' | ') 
                 print(f"{Fore.LIGHTBLACK_EX}       * {k}: {v_clean}")
 
-        # Guía Operativa
         print(f"{Fore.YELLOW}   [Guía Operativa]:")
         print(f"{Fore.CYAN}    🛠  Herramienta: {Fore.WHITE}{item['guia']['tool']}")
         print(f"{Fore.CYAN}    ⚡  Acción:      {Fore.WHITE}{item['guia']['action']}")
         print(f"{Fore.CYAN}    💻  Comando:     {Fore.WHITE}{item['guia']['path']}")
-        
-        # ELIMINADA LA SECCIÓN DE VULNERABILIDADES CONOCIDAS
-
 
 def reporte_markdown(target, datos):
     """Genera archivo Markdown para documentación."""
@@ -164,8 +153,6 @@ def reporte_markdown(target, datos):
                 for k, v in item['scripts'].items():
                     f.write(f"{k}:\n{v}\n")
                 f.write("```\n")
-            
-            # ELIMINADA LA SECCIÓN DE EXPLOITS EN MD
 
             f.write(f"#### 📋 Procedimiento Recomendado\n")
             f.write(f"* **Acción:** {item['guia']['action']}\n")
@@ -195,7 +182,6 @@ def reporte_json(target, datos):
 
 if __name__ == "__main__":
     args = obtener_argumentos()
-    
     nm_scan = escanear_objetivo(args.target)
     
     if nm_scan:
